@@ -12,12 +12,19 @@ class Snake:
     def __init__(self):
         self.turt = []
         self.length = 3
-        for num in range(3):
+        for num in range(self.length):
             self.turt.append(Turtle("square"))
             self.turt[num].penup()
             self.turt[num].color("white")
             self.turt[num].back(20 * num)
         self.head = self.turt[0]
+
+    def add_segment(self):
+        self.turt.append(Turtle("square"))
+        self.turt[-1].penup()
+        self.turt[-1].color("white")
+        self.turt[-1].goto(self.turt[-2].xcor(), self.turt[-2].ycor())
+        self.length += 1
 
     def move(self):
         for seg in range((self.length - 1), 0, -1):
